@@ -3,75 +3,49 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Template{
 	private $CI;
-	private $template;
+	private $template_path;
+	private $layer;
+	private $css;
+	private $js;
+	
 	function __construct(){
 		$this->CI =& get_instance();
-		$this->template = $this->CI->session->userdata['userinfo']['template'];
 	}
 	
-	private function load($view, $data){
-		$this->CI->load->view("templates/{$this->template}/{$view}", $data);
-	}
-	
-	function template($is_secure, $data = array('header','body','footer')){
-		$header = "";
-		$body = "";
-		$footer = "";
-		
-		if($is_secure){
+	private function init(){
+		//check if template folder exist
+		$template_path = APPPATH.'views/templates/'.$this->CI->session->userdata['userinfo']['template']);
+		if(file_exists($template_path)){
+			$this->template_path = $template_path;
+			$this->css = $this->template_path.'/css/style.css';
+			$this->js = $this->template_path.'/css/script.js';
+			$this->layer = 'front'
+			
+			if($this->CI->session->userdata['userinfo']['userid'] != 0){
+				$this->layer = 'back'
+			}
 			
 		}else{
-		
+			show_error('Unable to load the requested file');
 		}
+	}
+	
+	function show($view, $data = array('header'=>array(),'body'=>array(),'footer'=>array())){
+		$this->init();
+		$target_template = $this->template_path.'/'.$this->layer;
 		
-		$this->template->load($header, $data['header']);	
-		$this->template->load($body, $data['body']);
-		$this->template->load($footer, $data['footer']);
-	}
-	
-	/*private function login($data)
-	{
-		$this->CI->load->view("templates/{$this->template}/login", $data);
-	}
-	
-	private function header()
-	{
-	}
-	
-	private function main()
-	{
-	}
-	
-	private function footer()
-	{
-	}
+		//header
+		$data_header['var'] = $data['header'];
+		$data_header['css'] = $this->css;
+		$this->CI->load->view($target_template.'/header', $data_header);
 		
-	private function headerSecure()
-	{
-		$data_head['site_name'] = parameter_display(1);
-		$data_head['menu'] = $this->CI->system_model->getMenu($this->CI->session->userdata('userinfo')['userrole'], 'side', $this->CI->router->fetch_class(), $this->CI->router->fetch_method());
-		$this->CI->load->view("templates/{$this->template}/header_secure", $data_head);
+		//body
+		$data_body['var'] = $data['body'];
+		$this->CI->load->view($target_template.'/{$view}', $data_body);
+		
+		//footer
+		$data_footer['var'] = $data['footer'];
+		$data_footer['css'] = $this->js;
+		$this->CI->load->view($target_template.'/footer', $data_footer);
 	}
-	
-	private function mainSecure($view, $data)
-	{
-		$this->CI->load->view("templates/{$this->template}/{$view}", $data);
-	}
-	
-	private function footerSecure()
-	{
-		$this->CI->load->view("templates/{$this->template}/footer_secure", array());
-	}
-	
-	function templateLogin($params)
-	{
-		$this->login($params);
-	}
-	
-	function templateMain($mainView, $paramMain)
-	{
-		$this->headerSecure();
-		$this->mainSecure($mainView, $paramMain);
-		$this->footerSecure();
-	}*/
 }

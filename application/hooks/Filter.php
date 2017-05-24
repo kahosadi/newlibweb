@@ -26,12 +26,14 @@ class Filter {
 
     function is_allowed(){
 		
-		foreach($this->CI->session->userdata['site_page'] as $value){
+		/*foreach($this->CI->session->userdata['site_page'] as $value){
             if($this->url_segment == $value['ClassMethod']){
                 return true;
             }
         }
-        return false;
+        return false;*/
+		
+		return true;
     }
 }
 /* End of file Filter.php */

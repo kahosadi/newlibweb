@@ -14,15 +14,15 @@ class Template{
 	
 	private function init(){
 		//check if template folder exist
-		$template_path = APPPATH.'views/templates/'.$this->CI->session->userdata['userinfo']['template']);
-		if(file_exists($template_path)){
+		$template_path = 'templates/'.$this->CI->session->userdata['userinfo']['template'];
+		if(file_exists(APPPATH.'views/'.$template_path)){
 			$this->template_path = $template_path;
 			$this->css = $this->template_path.'/css/style.css';
 			$this->js = $this->template_path.'/css/script.js';
-			$this->layer = 'front'
+			$this->layer = 'front';
 			
 			if($this->CI->session->userdata['userinfo']['userid'] != 0){
-				$this->layer = 'back'
+				$this->layer = 'back';
 			}
 			
 		}else{
@@ -31,6 +31,7 @@ class Template{
 	}
 	
 	function show($view, $data = array('header'=>array(),'body'=>array(),'footer'=>array())){
+	
 		$this->init();
 		$target_template = $this->template_path.'/'.$this->layer;
 		
@@ -41,7 +42,7 @@ class Template{
 		
 		//body
 		$data_body['var'] = $data['body'];
-		$this->CI->load->view($target_template.'/{$view}', $data_body);
+		$this->CI->load->view($target_template."/{$view}", $data_body);
 		
 		//footer
 		$data_footer['var'] = $data['footer'];

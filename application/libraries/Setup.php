@@ -14,7 +14,7 @@ class Setup {
 	
 	function set_user_data(){
 		if(!$this->CI->session->userdata('site_parameter')){
-			$this->CI->session->set_userdata('site_parameter', $this->CI->system_model->getParameters());
+			$this->CI->session->set_userdata('site_parameter', $this->CI->system_model->get_parameter());
 		}
 	}
 	

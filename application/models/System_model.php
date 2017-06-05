@@ -16,12 +16,14 @@ class System_model extends CI_Model
 	function get_parameter($parameter_id = 0){
 		$sp = "CALL uspSelParameter(?)";
 		$result = $this->db->query($sp, array("parameter_id"=>$parameter_id))->result_array();
+		mysqli_next_result($this->db->conn_id);
 		return $result;
 	}
 	
 	function get_message_code($message_code_id = 0){
 		$sp = "CALL uspSelMessageCode(?)";
 		$result = $this->db->query($sp, array("message_code_id"=>$message_code_id))->result_array();
+		mysqli_next_result($this->db->conn_id);
 		return $result;
 	}
 	

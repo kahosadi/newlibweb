@@ -20,6 +20,16 @@ class Page extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->template->show('body',null);
+		$this->template->show(
+			array(
+				'body',
+				'body2'
+			),
+			array(
+				'header'=>array('Header','Header2'),
+				'body'=>array('Body'),
+				'footer'=>array('Footer')
+			)
+		);
 	}
 }

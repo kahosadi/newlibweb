@@ -5,12 +5,14 @@
  */
 
 body {
-    padding-top: 54px;
+    /*padding-top: 54px;*/
+    /*font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;*/
 }
 
 @media (min-width: 992px) {
     body {
-        padding-top: 56px;
+        /*padding-top: 56px;*/
     }
 }
 
@@ -26,4 +28,38 @@ body {
 
 .portfolio-item {
     margin-bottom: 30px;
+}
+
+.bg-6ABBDA {
+  background-color: #6ABBDA!important;
+}
+
+.bg-BAC97C {
+    background-color: #BAC97C !important;
+}
+
+.navbar-inverse .navbar-nav .nav-link {
+    color: rgba(255,255,255,1)!important;
+}
+
+.navbar-toggler-margin{
+    margin-top: 1.25rem;
+}
+
+#institutionalNav{
+  padding-top: 0px;
+  font-size: .6875rem;
+  min-height: .9375rem;
+}
+
+#navbarMain{
+  margin-top:15px; //make it align with text from brand image
+}
+
+#hours {
+    color: rgba(255,255,255,1);
+    min-height: 1.875rem;
+    vertical-align: middle;
+    line-height: 1.875rem;
+    font-size: .75rem;
 }

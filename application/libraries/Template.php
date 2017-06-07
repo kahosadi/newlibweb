@@ -7,6 +7,7 @@ class Template{
 	private $layer;
 	private $css;
 	private $js;
+	private $images;
 
 	function __construct(){
 		$this->CI =& get_instance();
@@ -19,6 +20,7 @@ class Template{
 			$this->template_path = $template_path;
 			$this->css = base_url().'assets/'.$this->template_path.'/css/style.css';
 			$this->js = base_url().'assets/'.$this->template_path.'/js/app.js';
+			$this->images = base_url().'assets/images/';
 			$this->layer = 'front';
 
 			if($this->CI->session->userdata['userinfo']['userid'] != 0){
@@ -44,6 +46,8 @@ class Template{
 		//header
 		$data_header['var'] = $data['header'];
 		$data_header['css'] = $this->css;
+		$data_header['logo'] = $this->images.'WebLogo.png';
+		$data_header['logoXS'] = $this->images.'WebLogoXS.png';
 		$this->CI->load->view($target_template.'/header', $data_header);
 
 		//body

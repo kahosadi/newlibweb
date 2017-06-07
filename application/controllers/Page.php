@@ -22,8 +22,8 @@ class Page extends CI_Controller {
 	{
 		$this->template->show(
 			array(
-				'body',
-				'body2'
+				'carousel',
+				'body'
 			),
 			array(
 				'header'=>array('Header','Header2'),

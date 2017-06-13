@@ -32,4 +32,60 @@ class Page extends CI_Controller {
 			)
 		);
 	}
+	
+	public function sejarah()
+	{
+		$this->template->show(
+			array(
+				'history'
+			),
+			array(
+				'header'=>array('Header','Header2'),
+				'body'=>array('Body'),
+				'footer'=>array('Footer')
+			)
+		);
+	}
+	
+	public function visi()
+	{
+		$this->template->show(
+			array(
+				'vision'
+			),
+			array(
+				'header'=>array('Header','Header2'),
+				'body'=>array('Body'),
+				'footer'=>array('Footer')
+			)
+		);
+	}
+	
+	public function struktur()
+	{
+		$this->template->show(
+			array(
+				'structure'
+			),
+			array(
+				'header'=>array('Header','Header2'),
+				'body'=>array('Body'),
+				'footer'=>array('Footer')
+			)
+		);
+	}
+	
+	public function tatatertib()
+	{
+		$this->template->show(
+			array(
+				'rule'
+			),
+			array(
+				'header'=>array('Header','Header2'),
+				'body'=>array('Body'),
+				'footer'=>array('Footer')
+			)
+		);
+	}
 }

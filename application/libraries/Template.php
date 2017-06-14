@@ -40,6 +40,11 @@ class Template{
 		)
 	){
 
+		if($view == 'login'){
+			$this->CI->load->view('login');
+			return;
+		}
+
 		$this->init();
 		$target_template = $this->template_path.'/'.$this->layer;
 

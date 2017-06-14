@@ -18,6 +18,25 @@ class Page extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	public function show($action = '', $page = 1){
+		//$action cek isi db kalau ada action yang bernama sama
+		//jika ada load dari db, klo ga ada not found
+		if($action == ''){
+			$this->template->show(
+				array(
+					'carousel',
+					'body'
+				),
+				array(
+					'header'=>array('Header','Header2'),
+					'body'=>array('Body'),
+					'footer'=>array('Footer')
+				)
+			);	
+		}
+	}
+
 	public function index()
 	{
 		$this->template->show(
@@ -32,8 +51,8 @@ class Page extends CI_Controller {
 			)
 		);
 	}
-	
-	public function sejarah()
+
+	private function sejarah()
 	{
 		$this->template->show(
 			array(
@@ -46,8 +65,8 @@ class Page extends CI_Controller {
 			)
 		);
 	}
-	
-	public function visi()
+
+	private function visi()
 	{
 		$this->template->show(
 			array(
@@ -60,8 +79,8 @@ class Page extends CI_Controller {
 			)
 		);
 	}
-	
-	public function struktur()
+
+	private function struktur()
 	{
 		$this->template->show(
 			array(
@@ -74,8 +93,8 @@ class Page extends CI_Controller {
 			)
 		);
 	}
-	
-	public function tatatertib()
+
+	private function tatatertib()
 	{
 		$this->template->show(
 			array(
@@ -87,5 +106,10 @@ class Page extends CI_Controller {
 				'footer'=>array('Footer')
 			)
 		);
+	}
+
+	private function login()
+	{
+		$this->template->show('login');
 	}
 }

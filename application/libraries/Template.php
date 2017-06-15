@@ -41,7 +41,7 @@ class Template{
 	){
 
 		if($view == 'login'){
-			$this->CI->load->view('login');
+			$this->CI->load->view('login',$data);
 			return;
 		}
 

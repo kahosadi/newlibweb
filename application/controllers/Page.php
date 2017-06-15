@@ -18,6 +18,10 @@ class Page extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	function __construct(){
+		parent::__construct();
+		$this->load->model('user_model');
+	}
 
 	public function show($action = '', $page = 1){
 		//$action cek isi db kalau ada action yang bernama sama
@@ -33,7 +37,7 @@ class Page extends CI_Controller {
 					'body'=>array('Body'),
 					'footer'=>array('Footer')
 				)
-			);	
+			);
 		}
 	}
 
@@ -80,7 +84,7 @@ class Page extends CI_Controller {
 		);
 	}
 
-	private function struktur()
+	public function struktur()
 	{
 		$this->template->show(
 			array(
@@ -94,7 +98,7 @@ class Page extends CI_Controller {
 		);
 	}
 
-	private function tatatertib()
+	public function tatatertib()
 	{
 		$this->template->show(
 			array(
@@ -104,12 +108,61 @@ class Page extends CI_Controller {
 				'header'=>array('Header','Header2'),
 				'body'=>array('Body'),
 				'footer'=>array('Footer')
+
 			)
 		);
 	}
 
-	private function login()
+	public function login($action = '')
 	{
-		$this->template->show('login');
+		$data['message'] = $this->session->flashdata('message');
+
+		switch($action){
+			case 'auth'	: $submit = $this->input->post('btnlogin');
+										if(isset($submit)){
+											$username = $this->input->post('username');
+											$password = $this->input->post('password');
+
+											if(isset($username) && isset($password)){
+												$user_detail = $this->user_model->auth_user($username, sha1($password));
+
+												if(!empty($user_detail)){
+													if($user_detail[0]['is_enabled'] != 0){
+														$user_info = array(
+															"userid" => $user_detail[0]['id'],
+															"username" => $user_detail[0]['user_name'],
+															"fullname" => $user_detail[0]['full_name'],
+															"email" => $user_detail[0]['email'],
+															"phone" => $user_detail[0]['phone'],
+															"template" => "default"
+														);
+
+														$this->session->set_userdata('userinfo', $user_info);
+
+														redirect('/');
+													}else{
+															$message = message_display(3, 'Administrator Sistem');
+															$this->session->set_flashdata('message',$message);
+															redirect('page/login');
+													}
+												}else{
+													$message = message_display(2, '');
+													echo $message;
+													$this->session->set_flashdata('message',$message);
+													redirect('page/login');
+												}
+											}
+										}
+
+										break;
+		}
+
+		$this->template->show('login', $data);
+	}
+
+	public function logout()
+	{
+		$this->session->sess_destroy();
+		redirect('/');
 	}
 }

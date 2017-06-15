@@ -89,4 +89,4 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 | Custom Constants
 |--------------------------------------------------------------------------
 */
-
+defined('MESSAGE_CODE_DELIMITER')      OR define('MESSAGE_CODE_DELIMITER', ';;'); // highest automatically-assigned error code

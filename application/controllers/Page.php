@@ -38,6 +38,8 @@ class Page extends CI_Controller {
 					'footer'=>array('Footer')
 				)
 			);
+		}else{
+
 		}
 	}
 
@@ -103,6 +105,20 @@ class Page extends CI_Controller {
 		$this->template->show(
 			array(
 				'rule'
+			),
+			array(
+				'header'=>array('Header','Header2'),
+				'body'=>array('Body'),
+				'footer'=>array('Footer')
+
+			)
+		);
+	}
+
+	public function test(){
+		$this->template->show(
+			array(
+				'test'
 			),
 			array(
 				'header'=>array('Header','Header2'),

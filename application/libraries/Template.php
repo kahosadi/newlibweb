@@ -4,7 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Template{
 	private $CI;
 	private $template_path;
-	private $layer;
 	private $css;
 	private $js;
 	private $images;
@@ -21,12 +20,6 @@ class Template{
 			$this->css = base_url().'assets/'.$this->template_path.'/css/style.css';
 			$this->js = base_url().'assets/'.$this->template_path.'/js/app.js';
 			$this->images = base_url().'assets/images/';
-			$this->layer = 'front';
-
-			if($this->CI->session->userdata['userinfo']['userid'] != 0){
-				$this->layer = 'back';
-			}
-
 		}else{
 			show_error('Unable to load the requested file');
 		}
@@ -46,7 +39,7 @@ class Template{
 		}
 
 		$this->init();
-		$target_template = $this->template_path.'/'.$this->layer;
+		$target_template = $this->template_path.'/';
 
 		//header
 		$data_header['var'] = $data['header'];

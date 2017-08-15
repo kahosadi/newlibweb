@@ -12,10 +12,10 @@
     <!--<script src="<?=base_url()?>assets/vendor/chart.js/Chart.min.js"></script>-->
     <script src="<?=base_url()?>assets/vendor/datatables/jquery.dataTables.js"></script>
     <script src="<?=base_url()?>assets/vendor/datatables/dataTables.bootstrap4.js"></script>
-
+    <script src="<?=base_url()?>assets/vendor/jquery.simplepopup.js"></script>
     <!-- Custom scripts for this template -->
     <script src="<?=base_url()?>assets/js/sb-admin.js"></script>
-
+    <script src="<?=base_url().$js?>"></script>
 </body>
 
 </html>

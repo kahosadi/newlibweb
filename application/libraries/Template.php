@@ -86,6 +86,11 @@ class Template{
 			$data_footer['var'] = $data['footer'];
 		}
 
+		/*For admin only use 'js' as array key*/
+		if(array_key_exists('js',$data_footer['var'])){
+			$this->js = $data_footer['var']['js'];
+		}
+
 		$data_footer['js'] = $this->js;
 		$this->CI->load->view($target_template.'/footer', $data_footer);
 	}

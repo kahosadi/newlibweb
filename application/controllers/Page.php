@@ -183,11 +183,11 @@ class Page extends CI_Controller {
 												'header'=>array('Header','Header2'),
 												'body'=>array('Body'),
 												'footer'=>array('Footer')
-
 											)
 			); break;
 			case "parameter" :
 											$parameter = $this->system_model->get_parameter(0);
+											$js = "assets/js/page/parameter.php.js";
 											$this->template->show(
 											array(
 												'parameter'
@@ -195,7 +195,7 @@ class Page extends CI_Controller {
 											array(
 												'header'=>array('Header','Header2'),
 												'body'=>array($parameter),
-												'footer'=>array('Footer')
+												'footer'=>array('js'=>$js)
 											)
 			); break;
 			case "messagecode" :

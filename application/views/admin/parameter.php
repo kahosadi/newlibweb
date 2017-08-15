@@ -48,7 +48,7 @@
                                     <td><?=$v['parameter_value']?></td>
                                     <td><?=$v['created_date']?></td>
                                     <td><?=$v['created_by']?></td>
-                                    <td><button type="button" class="btn btn-link btn-sm">Ubah</button><button type="button" class="btn btn-link btn-sm text-danger">Hapus</button></td>
+                                    <td><button type="button" class="btn btn-link btn-sm">Ubah</button><button type="button" class="btn btn-link btn-sm text-danger del-btn">Hapus</button></td>
                                 </tr>
                                 <?php  }
                                 ?>
@@ -60,7 +60,6 @@
                     Updated yesterday at 11:59 PM
                 </div>
             </div>
-
-    </div>
+        </div>
    <!-- /.container-fluid -->
 </div>

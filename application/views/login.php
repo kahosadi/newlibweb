@@ -68,9 +68,9 @@
           </div>
           <div class="card-block">
             <label for="inputUser" class="sr-only">User name</label>
-            <input type="text" name="username" id="inputUser" class="form-control" placeholder="User name" required autofocus>
+            <input type="text" value="nelfrits.christopher" name="username" id="inputUser" class="form-control" placeholder="User name" required autofocus>
             <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <input type="password" value="Password2017" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
             <div class="checkbox">
               <label>
                 <input type="checkbox" value="remember-me"> Remember me

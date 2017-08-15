@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 if(!function_exists('message_display')){
 	function message_display($id = 1, $replacement_text){
 		$CI =& get_instance();
-		$message_code = $CI->system_model->get_message_code($id)[0]['message'];
+		$message_code = $CI->system_model->get_message_code($id)[0]['message;;type'];
 
 		if(is_array($replacement_text)){
 			$idx = 0;

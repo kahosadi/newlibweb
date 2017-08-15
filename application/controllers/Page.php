@@ -110,7 +110,6 @@ class Page extends CI_Controller {
 				'header'=>array('Header','Header2'),
 				'body'=>array('Body'),
 				'footer'=>array('Footer')
-
 			)
 		);
 	}
@@ -154,18 +153,16 @@ class Page extends CI_Controller {
 														);
 
 														$this->session->set_userdata('userinfo', $user_info);
-
-														redirect('/');
+														redirect(parameter_display(3));
 													}else{
 															$message = message_display(3, 'Administrator Sistem');
 															$this->session->set_flashdata('message',$message);
-															redirect('page/login');
+															redirect(parameter_display(2));
 													}
 												}else{
 													$message = message_display(2, '');
-													echo $message;
 													$this->session->set_flashdata('message',$message);
-													redirect('page/login');
+													redirect(parameter_display(2));
 												}
 											}
 										}
@@ -176,9 +173,63 @@ class Page extends CI_Controller {
 		$this->template->show('login', $data);
 	}
 
+	public function admin($method = "index"){
+		switch($method){
+			case "index" : $this->template->show(
+											array(
+												'index'
+											),
+											array(
+												'header'=>array('Header','Header2'),
+												'body'=>array('Body'),
+												'footer'=>array('Footer')
+
+											)
+			); break;
+			case "parameter" :
+											$parameter = $this->system_model->get_parameter(0);
+											$this->template->show(
+											array(
+												'parameter'
+											),
+											array(
+												'header'=>array('Header','Header2'),
+												'body'=>array($parameter),
+												'footer'=>array('Footer')
+											)
+			); break;
+			case "messagecode" :
+											$messagecode = $this->system_model->get_message_code(0);
+											$this->template->show(
+											array(
+												'messagecode'
+											),
+											array(
+												'header'=>array('Header','Header2'),
+												'body'=>array($messagecode),
+												'footer'=>array('Footer')
+											)
+			); break;
+			case "role" :
+											$role = $this->system_model->get_role(0);
+											$this->template->show(
+											array(
+												'role'
+											),
+											array(
+												'header'=>array('Header','Header2'),
+												'body'=>array($role),
+												'footer'=>array('Footer')
+											)
+			); break;
+			default			 : break;
+		}
+	}
+
 	public function logout()
 	{
 		$this->session->sess_destroy();
 		redirect('/');
 	}
+
 }

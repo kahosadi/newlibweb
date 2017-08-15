@@ -7,6 +7,7 @@ class Template{
 	private $css;
 	private $js;
 	private $images;
+	private $layer;
 
 	function __construct(){
 		$this->CI =& get_instance();
@@ -14,12 +15,24 @@ class Template{
 
 	private function init(){
 		//check if template folder exist
-		$template_path = 'templates/'.$this->CI->session->userdata['userinfo']['template'];
+		$template_path = '';
+		if(strtolower($this->CI->router->fetch_method()) == "admin"){
+			$this->layer = 'admin';
+		}else{
+			$template_path = 'templates/'.$this->CI->session->userdata['userinfo']['template'];
+		}
+
 		if(file_exists(APPPATH.'views/'.$template_path)){
 			$this->template_path = $template_path;
 			$this->css = base_url().'assets/'.$this->template_path.'/css/style.css';
 			$this->js = base_url().'assets/'.$this->template_path.'/js/app.js';
 			$this->images = base_url().'assets/images/';
+			$this->layer = '';
+
+			if(strtolower($this->CI->router->fetch_method()) == "admin"){
+				$this->layer = 'admin';
+			}
+
 		}else{
 			show_error('Unable to load the requested file');
 		}
@@ -39,7 +52,7 @@ class Template{
 		}
 
 		$this->init();
-		$target_template = $this->template_path.'/';
+		$target_template = $this->template_path.'/'.$this->layer;
 
 		//header
 		$data_header['var'] = $data['header'];

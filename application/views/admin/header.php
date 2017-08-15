@@ -18,10 +18,10 @@
     <link rel="stylesheet" href="<?=base_url().'assets/css/font-awesome.min.css'?>" type="text/css" />
 
     <!-- Plugin CSS -->
-    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/css/sb-admin.css" rel="stylesheet">
 
 </head>
 
@@ -32,7 +32,8 @@
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#">Start Bootstrap</a>
+		<a class="navbar-brand" href="#"><img class="img-fluid hidden-md-down" src="<?=$logo?>" alt="Logo"></a>
+        <a class="navbar-brand" href="#"><img class="img-fluid hidden-lg-up" src="<?=$logoXS?>" alt="Logo"></a>
         <div class="collapse navbar-collapse" id="navbarExample">
             <ul class="sidebar-nav navbar-nav">
                 <li class="nav-item active">
@@ -43,6 +44,23 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fa fa-fw fa-table"></i> Tables</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"><i class="fa fa-fw fa-wrench"></i> Konfigurasi</a>
+                    <ul class="sidebar-second-level collapse" id="collapseComponents">
+                        <li>
+                            <a href="<?=base_url()?>admin/parameter">Parameter</a>
+                        </li>
+                        <li>
+                            <a href="<?=base_url()?>admin/messagecode">Message Code</a>
+                        </li>
+                        <li>
+                            <a href="<?=base_url()?>admin/role">Role</a>
+                        </li>
+                        <li>
+                            <a href="#">Login Page</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"><i class="fa fa-fw fa-wrench"></i> Components</a>
@@ -135,7 +153,7 @@
                     </form>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-fw fa-sign-out"></i> Logout</a>
+                    <a class="nav-link" href="<?=base_url()?>/logout"><i class="fa fa-fw fa-sign-out"></i> Logout</a>
                 </li>
             </ul>
         </div>

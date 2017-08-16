@@ -25,7 +25,7 @@ class Page extends CI_Controller {
 
 	public function show($action = '', $page = 1){
 		//$action cek isi db kalau ada action yang bernama sama
-		//jika ada load dari db, klo ga ada not found
+		//jika ada load dari db, jika tidak ada not found
 		if($action == ''){
 			$this->template->show(
 				array(
@@ -230,6 +230,25 @@ class Page extends CI_Controller {
 	{
 		$this->session->sess_destroy();
 		redirect('/');
+	}
+
+	/* Ajax Methods */
+	public function page_ajax($params = ""){
+		switch ($method) {
+			case 'get_message_code':
+				/*message_display
+					params:
+					$id = 1,
+					$replacement_text,
+					$with_type = true
+				*/
+				echo "Hello world!";
+				break;
+
+			default:
+				# code...
+				break;
+		}
 	}
 
 }

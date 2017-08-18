@@ -233,22 +233,9 @@ class Page extends CI_Controller {
 	}
 
 	/* Ajax Methods */
-	public function page_ajax($params = ""){
-		switch ($method) {
-			case 'get_message_code':
-				/*message_display
-					params:
-					$id = 1,
-					$replacement_text,
-					$with_type = true
-				*/
-				echo "Hello world!";
-				break;
-
-			default:
-				# code...
-				break;
-		}
+	/* POST Method */
+	public function updins_parameter_ajax(){
+		
 	}
 
 }

@@ -59,6 +59,7 @@
                     </div>
                 </div>
                 <div class="card-footer small text-muted">
+                  <button id="add-btn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal">Tambah Parameter</button>
                   <!-- -->
                   <!-- Modal -->
                   <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModal" aria-hidden="true">
@@ -88,8 +89,6 @@
                           </form>
                         </div>
                         <div class="modal-footer">
-                          <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                          <button type="button" class="btn btn-primary">Simpan</button>-->
                         </div>
                       </div>
                     </div>

@@ -14,10 +14,8 @@ $( document ).ready(function() {
     });
 
     //Update Action
-
     $("button.upd-btn").on("click", function(){
       var paramid = $(this).closest("tr").attr('id').replace("param","");
-      console.log($(this).closest("tr").find("td.parameter_name"));
       $("#parameter_name").val($(this).closest("tr").find("td.parameter_name").text());
       $("#parameter_type").val($(this).closest("tr").find("td.parameter_type").text());
       $("#parameter_value").val($(this).closest("tr").find("td.parameter_value").text());
@@ -29,5 +27,12 @@ $( document ).ready(function() {
           $(event.target).next().text('No, this is not the time.');
         }
       });*/
+    });
+
+    //Add Action
+    $("#add-btn").on("click", function(){
+      $("#parameter_name").val("");
+      $("#parameter_type").val("");
+      $("#parameter_value").val("");
     });
 });

@@ -31,6 +31,14 @@ class System_model extends CI_Model
 		return $result;
 	}
 
+	function updins_parameter($parameter_id = 0, $parameter_name, $parameter_type, $parameter_value, $user_name){
+		$sp = "CALL uspUpdInsParameter(?,?,?,?,?)";
+		$result = $this->db->query($sp, array("parameter_id"=>$parameter_id, "parameter_name"=>$parameter_name, "parameter_type"=>$parameter_type, "parameter_value"=>$parameter_value, "created_by"=>$user_name))->result_array();
+		return $result;
+	}
+
+
+
 	/*function authUser($username, $password){
 		$sp = "CALL uspSelUserLogin(?,?)";
 		$result = $this->db->query($sp, array("UserName"=>$username, "UserPassword"=>$password))->result_array();

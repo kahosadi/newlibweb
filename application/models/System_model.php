@@ -37,6 +37,10 @@ class System_model extends CI_Model
 		return $result;
 	}
 
+	function get_parameter_type(){
+		return array("STRING", "DATE", "INTEGER");
+	}
+
 
 
 	/*function authUser($username, $password){

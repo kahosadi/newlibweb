@@ -187,6 +187,7 @@ class Page extends CI_Controller {
 			); break;
 			case "parameter" :
 											$parameter = $this->system_model->get_parameter(0);
+											$parameter_type = $this->system_model->get_parameter_type();
 											$js = "assets/js/page/parameter.php.js";
 											$this->template->show(
 											array(
@@ -194,7 +195,7 @@ class Page extends CI_Controller {
 											),
 											array(
 												'header'=>array('Header','Header2'),
-												'body'=>array($parameter),
+												'body'=>array(array($parameter, $parameter_type)),
 												'footer'=>array('js'=>$js)
 											)
 			); break;
@@ -235,7 +236,7 @@ class Page extends CI_Controller {
 	/* Ajax Methods */
 	/* POST Method */
 	public function updins_parameter_ajax(){
-		
+
 	}
 
 }

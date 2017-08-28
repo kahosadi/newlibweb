@@ -42,7 +42,7 @@
                             </tfoot>
                             <tbody>
                                 <?php
-                                  foreach($var as $v){
+                                  foreach($var[0] as $v){
                                 ?>
                                 <tr id="param<?=$v['id']?>">
                                     <td class="parameter_name"><?=$v['parameter_name']?></td>
@@ -79,7 +79,17 @@
                             </div>
                             <div class="form-group">
                               <label for="parameter_type">Tipe</label>
-                              <input type="text" class="form-control" id="parameter_type" placeholder="Tipe parameter">
+                              <select class="form-control" id="parameter_type">
+                                <option value="">-Pilih Salah Satu-</option>
+                                <?php
+                                  for($index=0;$index<count($var[1]);$index++){
+                                ?>
+                                  <option value="<?=$var[1][$index]?>"><?=$var[1][$index]?></option>
+                                <?php
+                                  }
+                                ?>
+                              </select>
+
                             </div>
                             <div class="form-group">
                               <label for="parameter_value">Nilai</label>

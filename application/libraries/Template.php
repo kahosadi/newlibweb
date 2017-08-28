@@ -63,6 +63,7 @@ class Template{
 
 		//body
 		$data_body['var'] = null;
+		//if there are more than one view
 		if(is_array($view)){
 			$index = 0;
 			for($index=0;$index<count($view);$index++){
